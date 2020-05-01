@@ -1,4 +1,8 @@
-Find out what weather your friends are in! This app is going to be a weather forecast app for places around the world! You will be able to look at the weather at different locations around the world. The end goal would be able to see your friends location from some kind of API and see what weather they are currently in as an adaptation to a normal weather app. 
+Find out what weather your friends are in! 
+This app is going to be a weather forecast app for places around the world! 
+You will be able to look at the weather at different locations around the world. 
+The end goal would be able to see your friends location from some kind of API and 
+see what weather they are currently in as an adaptation to a normal weather app. 
 App Title: Weather with Friends. 
 App Description:
 - Find locations
