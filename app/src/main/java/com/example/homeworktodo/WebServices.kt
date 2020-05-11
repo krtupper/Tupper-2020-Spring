@@ -18,7 +18,6 @@ object WebServices {
     }
 
     fun homeworks( callback: Callback<List<HomeworkItem>>){
-        val call = service.currentHomeworks()
-        call.enqueqe(callback)
+        service.currentHomeworks().enqueue(callback)
     }
 }

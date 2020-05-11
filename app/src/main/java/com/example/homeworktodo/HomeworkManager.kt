@@ -18,6 +18,26 @@ object HomeworkManager {
         }
     }
 
+    fun updateHomeworks()
+    {
+        val callback = object: Callback<List<HomeworkItem>> {
+            override fun onFailure(call: Call<List<HomeworkItem>>, t: Throwable) {
+                Log.e("BSU", "Error: ${call.toString()})")
+            }
+
+          override fun onResponse(
+            cll: Call<List<HomeworkItem>>,
+                response: Response<List<HomeworkItem>>
+            ) {
+                if(response?.isSuccessful()){
+                    Log.d("BSU", response.body()!!.toString())
+                }
+            }
+        }
+
+        WebServices.homeworks(callback)
+    }
+
     fun homeworkList(): MutableList<HomeworkItem>
     {
         return homeworkList
@@ -55,19 +75,6 @@ object HomeworkManager {
         homeworkList.remove(homeworkToRemove)
     }
 
-    fun updateHomeworks()
-    {
-        val callback = object: Callback<HomeworkItem>{
-            override fun onFailure(call: Call<HomeworkItem>, t: Throwable) {
-                Log.e("BSU","Error: ${call.toString()})")
-            }
-        }
-        override fun onResponse(call: Call<List<HomeworkItem>>, response: Response<List<HomeworkItem>>){
-            if(response?.isSuccessful()){
-                Log.d("BSU", response.body()!!.toString())
-            }
-        }
-        WebServices.homeworks(callback)
-    }
+
 
 }

@@ -9,5 +9,4 @@ interface HomeworkInterface {
         @GET("homeworks.json")
 //    @GET("history")
         fun currentHomeworks(): Call<List<HomeworkItem>>
-    }
 }
