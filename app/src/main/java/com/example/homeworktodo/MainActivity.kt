@@ -68,6 +68,8 @@ class MainActivity : AppCompatActivity(), HomeworkItemFragment.OnListFragmentInt
     }
 
     override fun onListFragmentInteraction(item: HomeworkItem?) {
-        Log.d("BSU","Called LIST frag")
+        val intent = Intent(this, HomeworkItemCrudActivity::class.java)
+        intent.putExtra("homeworkItem", item)
+        startActivity(intent)
     }
 }

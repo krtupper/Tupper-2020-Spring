@@ -1,5 +1,6 @@
 package com.example.homeworktodo.models
 
+import java.io.Serializable
 import java.util.*
 
 data class HomeworkItem(
@@ -9,6 +10,6 @@ data class HomeworkItem(
     val homeworkPriority: Int,
     val homeworkPoints: Int,
     val homeworkPercentage: Int
-) {
+):Serializable {
 
 }

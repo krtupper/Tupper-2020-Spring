@@ -6,9 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.homeworktodo.HomeworkItemCrudActivity
 import com.example.homeworktodo.HomeworkManager
 import com.example.homeworktodo.R
 import kotlinx.android.synthetic.main.homework_item_crud_fragment.*
+import kotlinx.android.synthetic.main.homework_item_crud_fragment.view.*
 
 class HomeworkItemCrudFragment : Fragment() {
 
@@ -22,7 +24,32 @@ class HomeworkItemCrudFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.homework_item_crud_fragment, container, false)
+
+        val view = inflater.inflate(R.layout.homework_item_crud_fragment, container, false)
+
+        val homeworkItem = (activity as HomeworkItemCrudActivity).homeworkItem
+        val title = homeworkItem.homeworkTitle
+        val description = homeworkItem.homeworkDescription
+
+        val percentage =  HomeworkPercentageTextView.text.toString()
+        val finalPercentage = Integer.parseInt(percentage)
+
+        val date =  HomeworkDateTextView.text.toString()
+        val finalDate = Integer.parseInt(date)
+
+        val points =  HomeworkPointsTextView.text.toString()
+        val finalPoints = Integer.parseInt(points)
+
+        val priority =  HomeworkPriorityTextView.text.toString()
+        val finalPriority= Integer.parseInt(priority)
+
+        view.HomeworkTitleTextView.setText(title)
+        view.HomeworkDescriptionTextView.setText(description)
+        view.HomeworkPriorityTextView.setText(finalPriority)
+        view.HomeworkDateTextView.setText(finalDate)
+        view.HomeworkPercentageTextView.setText(finalPercentage)
+        view.HomeworkPointsTextView.setText(finalPoints)
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
