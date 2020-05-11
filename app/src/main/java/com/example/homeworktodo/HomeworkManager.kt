@@ -1,6 +1,9 @@
 package com.example.homeworktodo
 
+import android.util.Log
 import com.example.homeworktodo.models.HomeworkItem
+import retrofit2.Call
+import retrofit2.Callback
 import java.util.*
 
 object HomeworkManager {
@@ -10,7 +13,7 @@ object HomeworkManager {
     init {
         for(i in 1..20)
         {
-            addHomework(HomeworkItem("title","description", Date(), 10, 100, 10))
+            addHomework(HomeworkItem("title","description", Date(), 10, 100, 10, isDone = false))
         }
     }
 
@@ -31,7 +34,7 @@ object HomeworkManager {
             dueDate = Date(homeworkDueDate)
         }
 
-        val newHomework = HomeworkItem(homeworkTitle,homeworkDescription,dueDate,homeworkPriority,homeworkPoints,homeworkPercentage)
+        val newHomework = HomeworkItem(homeworkTitle,homeworkDescription,dueDate,homeworkPriority,homeworkPoints,homeworkPercentage,isDone = false)
         addHomework(newHomework)
     }
 
@@ -49,6 +52,17 @@ object HomeworkManager {
     fun removeHomework(homeworkToRemove:HomeworkItem)
     {
         homeworkList.remove(homeworkToRemove)
+    }
+
+    fun updateHomeworks()
+    {
+        val callback = object: Callback<HomeworkItem>{
+            override fun onFailure(call: Call<HomeworkItem>, t: Throwable) {
+                Log.e("BSU","Error: ${call.toString()})")
+            }
+        }
+        override fun onResponse
+        WebServices.homeworks(callback)
     }
 
 }
