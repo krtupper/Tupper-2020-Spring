@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.homeworktodo.HomeworkManager
 import com.example.homeworktodo.R
 import kotlinx.android.synthetic.main.homework_item_crud_fragment.*
 
@@ -33,11 +34,12 @@ class HomeworkItemCrudFragment : Fragment() {
             val homeworkTitle = HomeworkTitleTextView.text.toString()
             val homeworkDescription = HomeworkDescriptionTextView.text.toString()
             val homeworkDueDate = HomeworkDateTextView.text.toString()
-            val homeworkPriority = HomeworkPriorityTextView.text.toString()
-            val homeworkPoints = HomeworkPointsTextView.text.toString()
-            val homeworkPercentage = HomeworkPercentageTextView.text.toString()
+            val homeworkPriority = Integer.valueOf(HomeworkPriorityTextView.text.toString())//HomeworkPriorityTextView.text.get
+            val homeworkPoints = Integer.valueOf(HomeworkPointsTextView.text.toString())
+            val homeworkPercentage = Integer.valueOf(HomeworkPercentageTextView.text.toString())
 
-
+            HomeworkManager.addHomework(homeworkTitle,homeworkDescription,homeworkDueDate,homeworkPriority,homeworkPoints, homeworkPercentage)
+            requireActivity().finish()
         }
 
     }

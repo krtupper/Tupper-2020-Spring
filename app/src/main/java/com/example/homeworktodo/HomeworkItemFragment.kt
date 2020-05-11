@@ -25,7 +25,7 @@ class HomeworkItemFragment : Fragment() {
     private var columnCount = 1
 
     private var listener: OnListFragmentInteractionListener? = null
-
+    lateinit var homeworkAdapter:HomeworkItemRecyclerViewAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,11 +40,18 @@ class HomeworkItemFragment : Fragment() {
                     else -> GridLayoutManager(context, columnCount)
                 }
                 adapter = HomeworkItemRecyclerViewAdapter(HomeworkManager.homeworkList(), listener)
+                homeworkAdapter = adapter as HomeworkItemRecyclerViewAdapter
             }
         }
         return view
     }
 
+
+    override fun onResume() {
+        super.onResume()
+
+        homeworkAdapter.notifyDataSetChanged()
+    }
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnListFragmentInteractionListener) {
