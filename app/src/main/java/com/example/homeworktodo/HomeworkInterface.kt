@@ -6,7 +6,6 @@ import retrofit2.Call
 
 interface HomeworkInterface {
 
-    interface ToDoInterface {
         @GET("homeworks.json")
 //    @GET("history")
         fun currentHomeworks(): Call<List<HomeworkItem>>

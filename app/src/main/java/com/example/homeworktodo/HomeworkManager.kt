@@ -4,6 +4,7 @@ import android.util.Log
 import com.example.homeworktodo.models.HomeworkItem
 import retrofit2.Call
 import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 object HomeworkManager {
@@ -61,7 +62,11 @@ object HomeworkManager {
                 Log.e("BSU","Error: ${call.toString()})")
             }
         }
-        override fun onResponse
+        override fun onResponse(call: Call<List<HomeworkItem>>, response: Response<List<HomeworkItem>>){
+            if(response?.isSuccessful()){
+                Log.d("BSU", response.body()!!.toString())
+            }
+        }
         WebServices.homeworks(callback)
     }
 
