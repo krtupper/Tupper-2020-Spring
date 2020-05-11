@@ -38,6 +38,7 @@ class HomeworkItemCrudFragment : Fragment() {
             val homeworkPercentage = HomeworkPercentageTextView.text.toString()
 
 
-    }
+        }
 
+    }
 }

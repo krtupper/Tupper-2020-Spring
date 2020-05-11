@@ -21,9 +21,18 @@ object HomeworkManager {
 
     fun addHomework(homeworkTitle: String, homeworkDescription: String, homeworkDueDate: String, homeworkPriority: Int, homeworkPoints: Int, homeworkPercentage: Int = 10)
     {
-        val dueDate:Date = Date(homeworkDueDate)
+        var dueDate:Date
+        if(homeworkDueDate.isBlank())
+        {
+            dueDate = Date()
+        }
+        else
+        {
+            dueDate = Date(homeworkDueDate)
+        }
 
         val newHomework = HomeworkItem(homeworkTitle,homeworkDescription,dueDate,homeworkPriority,homeworkPoints,homeworkPercentage)
+        addHomework(newHomework)
     }
 
 
