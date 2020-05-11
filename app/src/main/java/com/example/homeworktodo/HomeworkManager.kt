@@ -14,7 +14,7 @@ object HomeworkManager {
     init {
         for(i in 1..20)
         {
-            addHomework(HomeworkItem("title","description", Date(), 10, 100, 10, isDone = false))
+            addHomework(HomeworkItem("title","description", "2020-04-23", 10, 100, 10, isDone = false))
         }
     }
 
