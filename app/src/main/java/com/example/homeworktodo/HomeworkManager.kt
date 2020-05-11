@@ -5,7 +5,7 @@ import com.example.homeworktodo.models.HomeworkItem
 object HomeworkManager {
     private val homeworkList = mutableListOf<HomeworkItem>()
 
-    fun todoList(): MutableList<HomeworkItem>
+    fun homeworkList(): MutableList<HomeworkItem>
     {
         return homeworkList
     }

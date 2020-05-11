@@ -12,6 +12,7 @@ import android.view.ViewGroup
 
 import com.example.homeworktodo.dummy.DummyContent
 import com.example.homeworktodo.dummy.DummyContent.DummyItem
+import com.example.homeworktodo.models.HomeworkItem
 
 /**
  * A fragment representing a list of Items.
@@ -38,7 +39,7 @@ class HomeworkItemFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = HomeworkItemRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                adapter = HomeworkItemRecyclerViewAdapter(HomeworkManager.homeworkList(), listener)
             }
         }
         return view
@@ -71,7 +72,7 @@ class HomeworkItemFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem?)
+        fun onListFragmentInteraction(item: HomeworkItem?)
     }
 
 }

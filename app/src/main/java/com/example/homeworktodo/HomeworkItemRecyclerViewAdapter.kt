@@ -8,17 +8,17 @@ import android.widget.TextView
 
 
 import com.example.homeworktodo.HomeworkItemFragment.OnListFragmentInteractionListener
-import com.example.homeworktodo.dummy.DummyContent.DummyItem
+import com.example.homeworktodo.models.HomeworkItem
 
 import kotlinx.android.synthetic.main.fragment_homeworkitem.view.*
 
 /**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
+ * [RecyclerView.Adapter] that can display a [HomeworkItem] and makes a call to the
  * specified [OnListFragmentInteractionListener].
  * TODO: Replace the implementation with code for your data type.
  */
 class HomeworkItemRecyclerViewAdapter(
-    private val mValues: List<DummyItem>,
+    private val mValues: List<HomeworkItem>,
     private val mListener: OnListFragmentInteractionListener?
 ) : RecyclerView.Adapter<HomeworkItemRecyclerViewAdapter.ViewHolder>() {
 
@@ -26,7 +26,7 @@ class HomeworkItemRecyclerViewAdapter(
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as DummyItem
+            val item = v.tag as HomeworkItem
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
             mListener?.onListFragmentInteraction(item)
@@ -41,8 +41,8 @@ class HomeworkItemRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mIdView.text = item.id
-        holder.mContentView.text = item.content
+        holder.mIdView.text = item.homeworkTitle
+        holder.mContentView.text = item.homeworkDescription
 
         with(holder.mView) {
             tag = item

@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import com.example.homeworktodo.dummy.DummyContent
+import com.example.homeworktodo.models.HomeworkItem
 
 class MainActivity : AppCompatActivity(), HomeworkItemFragment.OnListFragmentInteractionListener {
 
@@ -60,7 +61,7 @@ class MainActivity : AppCompatActivity(), HomeworkItemFragment.OnListFragmentInt
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onListFragmentInteraction(item: DummyContent.DummyItem?) {
+    override fun onListFragmentInteraction(item: HomeworkItem?) {
         Log.d("BSU","Called LIST frag")
-}
+    }
 }
