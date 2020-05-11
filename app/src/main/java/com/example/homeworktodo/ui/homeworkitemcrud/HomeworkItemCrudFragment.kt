@@ -28,10 +28,17 @@ class HomeworkItemCrudFragment : Fragment() {
         val view = inflater.inflate(R.layout.homework_item_crud_fragment, container, false)
 
         val homeworkItem = (activity as HomeworkItemCrudActivity).homeworkItem
-        val title = homeworkItem.homeworkTitle
-        val description = homeworkItem.homeworkDescription
 
-        val percentage =  HomeworkPercentageTextView.text.toString()
+        homeworkItem?.let {
+            val title = it.homeworkTitle
+            val description = it.homeworkDescription
+
+            view.HomeworkTitleTextView.setText(title)
+            view.HomeworkDescriptionTextView.setText(description)
+        }
+
+
+       /* val percentage =  HomeworkPercentageTextView.text.toString()
         val finalPercentage = Integer.parseInt(percentage)
 
         val date =  HomeworkDateTextView.text.toString()
@@ -43,12 +50,12 @@ class HomeworkItemCrudFragment : Fragment() {
         val priority =  HomeworkPriorityTextView.text.toString()
         val finalPriority= Integer.parseInt(priority)
 
-        view.HomeworkTitleTextView.setText(title)
-        view.HomeworkDescriptionTextView.setText(description)
+
         view.HomeworkPriorityTextView.setText(finalPriority)
         view.HomeworkDateTextView.setText(finalDate)
         view.HomeworkPercentageTextView.setText(finalPercentage)
-        view.HomeworkPointsTextView.setText(finalPoints)
+        view.HomeworkPointsTextView.setText(finalPoints)*/
+
         return view
     }
 

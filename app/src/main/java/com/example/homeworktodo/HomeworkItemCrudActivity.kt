@@ -6,7 +6,7 @@ import com.example.homeworktodo.models.HomeworkItem
 import com.example.homeworktodo.ui.homeworkitemcrud.HomeworkItemCrudFragment
 
 class HomeworkItemCrudActivity : AppCompatActivity() {
-    lateinit var homeworkItem:HomeworkItem
+    var homeworkItem:HomeworkItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -15,7 +15,10 @@ class HomeworkItemCrudActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.container, HomeworkItemCrudFragment.newInstance())
                 .commitNow()
-            homeworkItem = intent.getSerializableExtra("homeworkItem") as HomeworkItem
+            val bundleExtra = intent.getSerializableExtra("homeworkItem")
+            bundleExtra?.let {
+                homeworkItem = it as HomeworkItem
+            }
         }
     }
 
