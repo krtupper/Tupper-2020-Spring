@@ -10,7 +10,7 @@ import java.util.*
 object HomeworkManager {
     private val homeworkList = mutableListOf<HomeworkItem>()
 
-    val num = homeworkList.size
+    //val num = homeworkList.size
     init {
         for(i in 1..20)
         {
@@ -24,11 +24,12 @@ object HomeworkManager {
         }
 
         override fun onResponse(
-            cll: Call<List<HomeworkItem>>,
+            call: Call<List<HomeworkItem>>,
             response: Response<List<HomeworkItem>>
         ) {
             if(response?.isSuccessful()){
                 Log.d("BSU", response.body()!!.toString())
+                homeworkList.addAll(response.body()!!)
             }
         }
     }
@@ -43,9 +44,9 @@ object HomeworkManager {
         return homeworkList
     }
 
-    fun addHomework(homeworkTitle: String, homeworkDescription: String, homeworkDueDate: String, homeworkPriority: Int, homeworkPoints: Int, homeworkPercentage: Int = 10)
+    fun addHomework(homeworkTitle: String, homeworkDescription: String = "", homeworkDueDate: String ="", homeworkPriority: Int = 10, homeworkPoints: Int = 10, homeworkPercentage: Int = 10)
     {
-        var dueDate:Date
+      /*  var dueDate:Date
         if(homeworkDueDate.isBlank())
         {
             dueDate = Date()
@@ -54,7 +55,7 @@ object HomeworkManager {
         {
             dueDate = Date(homeworkDueDate)
         }
-
+    */
         val newHomework = HomeworkItem(homeworkTitle,homeworkDescription,homeworkDueDate,homeworkPriority,homeworkPoints,homeworkPercentage,isDone = false)
         addHomework(newHomework)
     }
