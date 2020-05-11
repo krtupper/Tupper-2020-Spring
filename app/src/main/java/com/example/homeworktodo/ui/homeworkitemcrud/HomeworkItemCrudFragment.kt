@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import com.example.homeworktodo.HomeworkItemCrudActivity
 import com.example.homeworktodo.HomeworkManager
 import com.example.homeworktodo.R
+import com.example.homeworktodo.models.HomeworkItem
 import kotlinx.android.synthetic.main.homework_item_crud_fragment.*
 import kotlinx.android.synthetic.main.homework_item_crud_fragment.view.*
 
@@ -19,6 +20,7 @@ class HomeworkItemCrudFragment : Fragment() {
     }
 
     private lateinit var viewModel: HomeworkItemCrudViewModel
+    private var  homeworkItem:HomeworkItem? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,7 +29,7 @@ class HomeworkItemCrudFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.homework_item_crud_fragment, container, false)
 
-        val homeworkItem = (activity as HomeworkItemCrudActivity).homeworkItem
+         homeworkItem = (activity as HomeworkItemCrudActivity).homeworkItem
 
         homeworkItem?.let {
             val title = it.homeworkTitle
@@ -72,7 +74,16 @@ class HomeworkItemCrudFragment : Fragment() {
             val homeworkPoints = Integer.valueOf(HomeworkPointsTextView.text.toString())
             val homeworkPercentage = Integer.valueOf(HomeworkPercentageTextView.text.toString())
 
-            HomeworkManager.addHomework(homeworkTitle,homeworkDescription,homeworkDueDate,homeworkPriority,homeworkPoints, homeworkPercentage)
+            if(homeworkItem == null)
+            {
+                HomeworkManager.addHomework(homeworkTitle,homeworkDescription,homeworkDueDate,homeworkPriority,homeworkPoints, homeworkPercentage)
+            }
+            else
+            {
+                homeworkItem?.homeworkTitle = homeworkTitle
+                homeworkItem?.homeworkDescription = homeworkDescription
+            }
+            //HomeworkManager.addHomework(homeworkTitle,homeworkDescription,homeworkDueDate,homeworkPriority,homeworkPoints, homeworkPercentage)
             requireActivity().finish()
         }
 

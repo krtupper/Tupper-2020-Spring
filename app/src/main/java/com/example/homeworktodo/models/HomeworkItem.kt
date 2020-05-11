@@ -4,12 +4,11 @@ import java.io.Serializable
 import java.util.*
 
 data class HomeworkItem(
-    val homeworkTitle: String,
-    val homeworkDescription: String,
-    val homeworkDueDate: Date,
-    val homeworkPriority: Int,
-    val homeworkPoints: Int,
-    val homeworkPercentage: Int
-):Serializable {
-
-}
+    var homeworkTitle: String,
+    var homeworkDescription: String,
+    var homeworkDueDate: Date,
+    var homeworkPriority: Int,
+    var homeworkPoints: Int,
+    var homeworkPercentage: Int,
+    var isDone: Boolean
+):Serializable
