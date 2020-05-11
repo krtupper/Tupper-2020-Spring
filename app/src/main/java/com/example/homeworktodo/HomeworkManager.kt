@@ -18,23 +18,23 @@ object HomeworkManager {
         }
     }
 
-    fun updateHomeworks()
-    {
-        val callback = object: Callback<List<HomeworkItem>> {
-            override fun onFailure(call: Call<List<HomeworkItem>>, t: Throwable) {
-                Log.e("BSU", "Error: ${call.toString()})")
-            }
-
-          override fun onResponse(
-            cll: Call<List<HomeworkItem>>,
-                response: Response<List<HomeworkItem>>
-            ) {
-                if(response?.isSuccessful()){
-                    Log.d("BSU", response.body()!!.toString())
-                }
-            }
+    private val callback = object: Callback<List<HomeworkItem>> {
+        override fun onFailure(call: Call<List<HomeworkItem>>, t: Throwable) {
+            Log.e("BSU", "Error: ${call.toString()})")
         }
 
+        override fun onResponse(
+            cll: Call<List<HomeworkItem>>,
+            response: Response<List<HomeworkItem>>
+        ) {
+            if(response?.isSuccessful()){
+                Log.d("BSU", response.body()!!.toString())
+            }
+        }
+    }
+
+    fun updateHomeworks()
+    {
         WebServices.homeworks(callback)
     }
 
@@ -55,7 +55,7 @@ object HomeworkManager {
             dueDate = Date(homeworkDueDate)
         }
 
-        val newHomework = HomeworkItem(homeworkTitle,homeworkDescription,dueDate,homeworkPriority,homeworkPoints,homeworkPercentage,isDone = false)
+        val newHomework = HomeworkItem(homeworkTitle,homeworkDescription,homeworkDueDate,homeworkPriority,homeworkPoints,homeworkPercentage,isDone = false)
         addHomework(newHomework)
     }
 
