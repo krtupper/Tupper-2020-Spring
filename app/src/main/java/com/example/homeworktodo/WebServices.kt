@@ -11,6 +11,9 @@ object WebServices {
     init {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://bsu-kylertupper.s3.us-west-2.amazonaws.com/")
+
+                //https://bsu-kylertupper.s3-us-west-2.amazonaws.com/homeworks.json
+
                 //https://bsu-kylertupper.s3.us-west-2.amazonaws.com/
             .addConverterFactory(GsonConverterFactory.create())
             .build()
