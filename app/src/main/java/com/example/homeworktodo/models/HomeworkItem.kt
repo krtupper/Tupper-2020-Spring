@@ -8,6 +8,7 @@ import java.util.*
 @Entity
 data class HomeworkItem(
     @Id var id:Long = 0,
+
     @SerializedName("homeworkTitle")
     var homeworkTitle: String?,
     var homeworkDescription: String?,

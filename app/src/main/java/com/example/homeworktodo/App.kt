@@ -7,7 +7,6 @@ class App:Application() {
     override fun onCreate() {
         super.onCreate()
 
-
         ObjectBoxObject.init(this)
         HomeworkManager.updateHomeworks()
         Log.d("BSU", "Loaded Application")
