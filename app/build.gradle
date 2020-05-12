@@ -4,6 +4,10 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt' // Required for annotation processing.
+
+apply plugin: 'io.objectbox' // Apply last.
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"

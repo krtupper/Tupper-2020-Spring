@@ -15,7 +15,7 @@ object HomeworkManager {
     init {
         for(i in 1..20)
         {
-            addHomework(HomeworkItem("title","description", "2020-04-23", 10, 100, 10, isDone = false))
+            addHomework(HomeworkItem(homeworkTitle = "title",homeworkDescription = "description", homeworkDueDate = "2020-04-23", homeworkPercentage = 10, homeworkPoints = 100, homeworkPriority = 10, isDone = false))
         }
     }
 
@@ -59,7 +59,7 @@ object HomeworkManager {
             dueDate = Date(homeworkDueDate)
         }
     */
-        val newHomework = HomeworkItem(homeworkTitle, homeworkDescription, homeworkDueDate, homeworkPriority, homeworkPoints, homeworkPercentage, false)
+        val newHomework = HomeworkItem(homeworkTitle = "title", homeworkDescription = "", homeworkDueDate = "", homeworkPriority = 5, homeworkPoints = 10, homeworkPercentage = 10, isDone = false)
         //addHomeworkItems(newHomework)
         addHomework(newHomework)
         EventBus.getDefault().post(NewHomeworkItemsEvent())

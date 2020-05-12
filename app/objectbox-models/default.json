@@ -1,0 +1,71 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:5000094574973782848",
+      "lastPropertyId": "8:6747210027718494991",
+      "name": "HomeworkItem",
+      "properties": [
+        {
+          "id": "1:2974174929268673754",
+          "name": "id",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:8620679812585886540",
+          "name": "homeworkTitle",
+          "type": 9
+        },
+        {
+          "id": "3:4968793344297999565",
+          "name": "homeworkDescription",
+          "type": 9
+        },
+        {
+          "id": "4:1634494524022671937",
+          "name": "homeworkDueDate",
+          "type": 9
+        },
+        {
+          "id": "5:7026915712251997944",
+          "name": "homeworkPriority",
+          "type": 5,
+          "flags": 2
+        },
+        {
+          "id": "6:8946441397400457990",
+          "name": "homeworkPoints",
+          "type": 5,
+          "flags": 2
+        },
+        {
+          "id": "7:7457365327138252901",
+          "name": "homeworkPercentage",
+          "type": 5,
+          "flags": 2
+        },
+        {
+          "id": "8:6747210027718494991",
+          "name": "isDone",
+          "type": 1,
+          "flags": 2
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:5000094574973782848",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}
