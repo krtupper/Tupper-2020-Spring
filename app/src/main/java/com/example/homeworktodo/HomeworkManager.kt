@@ -61,13 +61,7 @@ object HomeworkManager {
         return homeworkList
     }
 
-    fun addHomework(
-        homeworkTitle: String,
-        homeworkDescription: String = "",
-        homeworkDueDate: String = "",
-        homeworkPriority: Int = 10,
-        homeworkPoints: Int = 10,
-        homeworkPercentage: Int = 10
+    fun addHomework(homeworkTitle: String, homeworkDescription: String = "", homeworkDueDate: String = "", homeworkPriority: Int = 10, homeworkPoints: Int = 10, homeworkPercentage: Int = 10
     ) {
         /*  var dueDate:Date
         if(homeworkDueDate.isBlank())
@@ -80,12 +74,12 @@ object HomeworkManager {
         }
     */
         val newHomework = HomeworkItem(
-            homeworkTitle = "title",
-            homeworkDescription = "",
-            homeworkDueDate = "",
-            homeworkPriority = 5,
-            homeworkPoints = 10,
-            homeworkPercentage = 10,
+            homeworkTitle = homeworkTitle,
+            homeworkDescription = homeworkDescription,
+            homeworkDueDate = homeworkDueDate,
+            homeworkPriority = homeworkPriority,
+            homeworkPoints = homeworkPoints,
+            homeworkPercentage = homeworkPercentage,
             isDone = false
         )
         //addHomeworkItems(newHomework)

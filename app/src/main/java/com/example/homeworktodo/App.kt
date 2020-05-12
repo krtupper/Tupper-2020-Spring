@@ -8,7 +8,9 @@ class App:Application() {
         super.onCreate()
 
         ObjectBoxObject.init(this)
+
         HomeworkManager.updateHomeworks()
+
         Log.d("BSU", "Loaded Application")
     }
 }
