@@ -27,7 +27,7 @@ object HomeworkManager {
         override fun onResponse(call: Call<List<HomeworkItem>>, response: Response<List<HomeworkItem>>) {
             if(response?.isSuccessful()){
                 Log.d("BSU", response.body()!!.toString())
-                addHomeworkItems(response.body()!!)
+                homeworkList.addAll(response.body()!!)
 
                 EventBus.getDefault().post(NewHomeworkItemsEvent())
             }
@@ -35,7 +35,6 @@ object HomeworkManager {
     }
     fun addHomeworkItems( listofHomeworks:List<HomeworkItem> ){
         homeworkList.addAll(listofHomeworks)
-
         EventBus.getDefault().post(NewHomeworkItemsEvent())
     }
     fun updateHomeworks()
@@ -61,7 +60,9 @@ object HomeworkManager {
         }
     */
         val newHomework = HomeworkItem(homeworkTitle, homeworkDescription, homeworkDueDate, homeworkPriority, homeworkPoints, homeworkPercentage, false)
+        //addHomeworkItems(newHomework)
         addHomework(newHomework)
+        EventBus.getDefault().post(NewHomeworkItemsEvent())
     }
 
 
