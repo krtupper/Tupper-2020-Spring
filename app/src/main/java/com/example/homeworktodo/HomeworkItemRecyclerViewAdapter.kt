@@ -43,6 +43,11 @@ class HomeworkItemRecyclerViewAdapter(
         val item = mValues[position]
         holder.mIdView.text = item.homeworkTitle
         holder.mContentView.text = item.homeworkDescription
+        //holder.mContentView.text = item.homeworkDueDate
+       // holder.mContentView.integer = item.homeworkPercentage
+       // holder.mContentView.text = item.homeworkDueDate
+        //holder.mContentView.text = item.homeworkDueDate
+       // holder.mContentView.text = item.homeworkDueDate
 
         with(holder.mView) {
             tag = item
