@@ -6,6 +6,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import org.greenrobot.eventbus.EventBus
 
 object HomeworkManager {
     private val homeworkList = mutableListOf<HomeworkItem>()
@@ -20,26 +21,29 @@ object HomeworkManager {
 
     private val callback = object: Callback<List<HomeworkItem>> {
         override fun onFailure(call: Call<List<HomeworkItem>>, t: Throwable) {
-            Log.e("BSU", "Error: ${call.toString()})")
+            Log.e("BSU", "Error: ${call.toString()}")
         }
 
-        override fun onResponse(
-            call: Call<List<HomeworkItem>>,
-            response: Response<List<HomeworkItem>>
-        ) {
+        override fun onResponse(call: Call<List<HomeworkItem>>, response: Response<List<HomeworkItem>>) {
             if(response?.isSuccessful()){
                 Log.d("BSU", response.body()!!.toString())
-                homeworkList.addAll(response.body()!!)
+                addHomeworkItems(response.body()!!)
+
+                EventBus.getDefault().post(NewHomeworkItemsEvent())
             }
         }
     }
+    fun addHomeworkItems( listofHomeworks:List<HomeworkItem> ){
+        homeworkList.addAll(listofHomeworks)
 
+        EventBus.getDefault().post(NewHomeworkItemsEvent())
+    }
     fun updateHomeworks()
     {
         WebServices.homeworks(callback)
     }
 
-    fun homeworkList(): MutableList<HomeworkItem>
+    fun homeworkList(): List<HomeworkItem>
     {
         return homeworkList
     }
@@ -56,7 +60,7 @@ object HomeworkManager {
             dueDate = Date(homeworkDueDate)
         }
     */
-        val newHomework = HomeworkItem(homeworkTitle,homeworkDescription,homeworkDueDate,homeworkPriority,homeworkPoints,homeworkPercentage,isDone = false)
+        val newHomework = HomeworkItem(homeworkTitle, homeworkDescription, homeworkDueDate, homeworkPriority, homeworkPoints, homeworkPercentage, false)
         addHomework(newHomework)
     }
 

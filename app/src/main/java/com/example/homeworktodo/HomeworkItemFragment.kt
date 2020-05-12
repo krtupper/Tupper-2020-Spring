@@ -13,6 +13,9 @@ import android.view.ViewGroup
 import com.example.homeworktodo.dummy.DummyContent
 import com.example.homeworktodo.dummy.DummyContent.DummyItem
 import com.example.homeworktodo.models.HomeworkItem
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+import kotlin.concurrent.thread
 
 /**
  * A fragment representing a list of Items.
@@ -26,6 +29,7 @@ class HomeworkItemFragment : Fragment() {
 
     private var listener: OnListFragmentInteractionListener? = null
     lateinit var homeworkAdapter:HomeworkItemRecyclerViewAdapter
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,8 +54,14 @@ class HomeworkItemFragment : Fragment() {
     override fun onResume() {
         super.onResume()
 
+       // homeworkAdapter.notifyDataSetChanged()
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun updatedHomeworks(event:NewHomeworkItemsEvent)
+    {
         homeworkAdapter.notifyDataSetChanged()
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnListFragmentInteractionListener) {
